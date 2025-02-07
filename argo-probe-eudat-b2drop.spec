@@ -22,7 +22,7 @@ Monitoring metrics to check functionality of B2DROP service
 %install
 
 install -d %{buildroot}/%{_libexecdir}/argo/probes/eudat-b2drop
-install -m 755 api/b2drop_api.py %{buildroot}/%{_libexecdir}/argo/probes/eudat-b2drop/api/b2drop_api.py
+install -m 755 b2drop_api.py %{buildroot}/%{_libexecdir}/argo/probes/eudat-b2drop/b2drop_api.py
 install -m 755 main.py %{buildroot}/%{_libexecdir}/argo/probes/eudat-b2drop/main.py
 install -m 755 probes.py %{buildroot}/%{_libexecdir}/argo/probes/eudat-b2drop/probes.py
 
