@@ -1,7 +1,7 @@
 import argparse
 import json
 import os
-from api.b2drop_api import B2dropClient
+from b2drop_api import B2dropClient
 from probes import probe_upload, probe_up_and_download, probe_checksum, probe_delete
 import logging
 
