@@ -1,6 +1,6 @@
 PKGNAME=argo-probe-eudat-b2drop
 SPECFILE=${PKGNAME}.spec
-FILES= api/b2drop_api.py probes.py main.py ${SPECFILE}
+FILES= b2drop_api.py probes.py b2drop.py ${SPECFILE}
 
 PKGVERSION=$(shell grep -s '^Version:' $(SPECFILE) | sed -e 's/Version:\s*//')
 
