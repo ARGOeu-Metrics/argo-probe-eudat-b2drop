@@ -9,7 +9,7 @@ Source:		%{name}-%{version}.tar.gz
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
-Requires:	python
+Requires:	python3
 
 %description
 Monitoring metrics to check functionality of B2DROP service 
