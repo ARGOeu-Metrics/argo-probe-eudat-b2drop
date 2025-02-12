@@ -74,8 +74,12 @@ def main(args):
 
     if not success:
         logger.error(f"Test was not successful!")
+        print "CRITICAL: Test was not successful."
+        sys.exit(2)
     else:
         logger.info(f"Test was successful!")
+        print "OK: Test was successful!"
+        sys.exit(0)
     return success
 
 
