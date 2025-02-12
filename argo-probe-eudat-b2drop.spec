@@ -10,6 +10,7 @@ BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 Requires:	python3
+Requires:	webdav3
 
 %description
 Monitoring metrics to check functionality of B2DROP service 
