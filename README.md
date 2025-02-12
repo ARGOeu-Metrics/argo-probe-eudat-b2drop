@@ -35,7 +35,7 @@ You can have multiple probing options:
 
 #### Config file
 
-Alternatively you can use a config file with the following format
+Alternatively you can use a config file with the name `config.json` with the following format
 ```
 {
     "url": "https://b2drop.eudat.eu",
