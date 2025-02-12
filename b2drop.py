@@ -29,7 +29,8 @@ def load_config(config_file='config.json'):
             except json.decoder.JSONDecodeError as e:
                 logger.error("Invalid Json file")
                 logger.error(str(e))
-                exit(1)
+                print ("CRITICAL: Invalid Json file")
+                sys.exit(2)
     return None
 
 
@@ -38,7 +39,7 @@ def main(args):
     if not args.url or not args.username or not args.password:
         if not args.config:
             logger.error("You either need to set 'url', 'username' and 'password' or set up a config and use 'config'!")
-            print "You either need to set 'url', 'username' and 'password' or set up a config and use 'config'!"
+            print ("You either need to set 'url', 'username' and 'password' or set up a config and use 'config'!")
             sys.exit(2)
         config = load_config(args.config)
         if config:
@@ -47,7 +48,7 @@ def main(args):
             password = config.get('password', args.password)
         else:
             logger.error(f"Config file {args.config} not found or incomplete.")
-            print "CRITICAL: Config file not found or incomplete."
+            print ("CRITICAL: Config file not found or incomplete or username or password is missing.")
             sys.exit(2)
     else:
         url, username, password = args.url, args.username, args.password
@@ -67,18 +68,18 @@ def main(args):
         success = probe_delete(client)
     else:
         logger.error(f"Unknown probe type '{args.probe}'!")
-        print "CRITICAL: Unknown probe type."
+        print ("CRITICAL: Unknown probe type.")
         sys.exit(2)
 
     client.cleanup()
 
     if not success:
         logger.error(f"Test was not successful!")
-        print "CRITICAL: Test was not successful."
+        print ("CRITICAL: Test was not successful.")
         sys.exit(2)
     else:
         logger.info(f"Test was successful!")
-        print "OK: Test was successful!"
+        print ("OK: Test was successful!")
         sys.exit(0)
     return success
 
