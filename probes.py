@@ -1,4 +1,4 @@
-from api.b2drop_api import B2dropClient
+from b2drop_api import B2dropClient
 
 import os
 import logging
