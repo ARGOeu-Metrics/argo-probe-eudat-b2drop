@@ -28,14 +28,17 @@ install -m 755 b2drop.py %{buildroot}/%{_libexecdir}/argo/probes/eudat-b2drop/b2
 install -m 755 probes.py %{buildroot}/%{_libexecdir}/argo/probes/eudat-b2drop/probes.py
 
 
+
 %files
 %dir /%{_libexecdir}/argo
 %dir /%{_libexecdir}/argo/probes/
 %dir /%{_libexecdir}/argo/probes/eudat-b2drop
+%dir /var/spool/argo/probes/eudat-b2drop/
 
 %attr(0755,root,root) /%{_libexecdir}/argo/probes/eudat-b2drop/b2drop_api.py
 %attr(0755,root,root) /%{_libexecdir}/argo/probes/eudat-b2drop/b2drop.py
 %attr(0644,root,root) /%{_libexecdir}/argo/probes/eudat-b2drop/probes.py
+%attr(0750,sensu,sensu) /var/spool/argo/probes/eudat-b2drop/
 
 %pre
 
