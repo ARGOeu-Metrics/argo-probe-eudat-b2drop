@@ -3,6 +3,7 @@
 import argparse
 import json
 import os
+import sys
 from b2drop_api import B2dropClient
 from probes import probe_upload, probe_up_and_download, probe_checksum, probe_delete
 import logging
@@ -37,7 +38,8 @@ def main(args):
     if not args.url or not args.username or not args.password:
         if not args.config:
             logger.error("You either need to set 'url', 'username' and 'password' or set up a config and use 'config'!")
-            exit(1)
+            print "You either need to set 'url', 'username' and 'password' or set up a config and use 'config'!"
+            sys.exit(2)
         config = load_config(args.config)
         if config:
             url = config.get('url', args.url)
@@ -45,7 +47,8 @@ def main(args):
             password = config.get('password', args.password)
         else:
             logger.error(f"Config file {args.config} not found or incomplete.")
-            exit(1)
+            print "CRITICAL: Config file not found or incomplete."
+            sys.exit(2)
     else:
         url, username, password = args.url, args.username, args.password
 
@@ -64,7 +67,8 @@ def main(args):
         success = probe_delete(client)
     else:
         logger.error(f"Unknown probe type '{args.probe}'!")
-        exit(1)
+        print "CRITICAL: Unknown probe type."
+        sys.exit(2)
 
     client.cleanup()
 
