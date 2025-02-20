@@ -29,6 +29,14 @@ class B2dropClient:
         self.client.verify = True  # To not check SSL certificates (Default = True)
         # self.client.session.proxies(...)  # To set proxy directly into the session (Optional)
         # self.client.session.auth(...)  # To set proxy auth directly into the session (Optional)
+        if not self.logged_in():
+            message = f"Username or password wrong, please go to {url}/settings/user/security and create an app token and \
+                update your config.json OR username/password parameters"
+            logger.error(message)
+            raise ValueError(message)
+        else:
+            logger.info("API Client ready to use")
+
 
     def cleanup(self):
         self.delete(self.dummy_file)
