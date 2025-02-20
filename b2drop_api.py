@@ -2,12 +2,14 @@ from pathlib import Path
 import hashlib
 import tempfile
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 from webdav3.client import Client
-from webdav3.exceptions import RemoteResourceNotFound
+from webdav3.exceptions import RemoteResourceNotFound, RemoteParentNotFound, ResponseErrorCode
 
 from typing import Union, Optional
-
 
 class B2dropClient:
     def __init__(self, url: str, username: str, password: str):
