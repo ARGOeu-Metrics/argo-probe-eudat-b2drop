@@ -33,7 +33,10 @@ class B2dropClient:
             message = f"Username or password wrong, please go to {url}/settings/user/security and create an app token and \
                 update your config.json OR username/password parameters"
             logger.error(message)
-            raise ValueError(message)
+            print ("CRITICAL: Username or password wrong, please go to {url}/settings/user/security and create an app token and \
+                update your config.json OR username/password parameters")
+            sys.exit(2)
+            
         else:
             logger.info("API Client ready to use")
 
