@@ -47,6 +47,23 @@ class B2dropClient:
 
     def __del__(self):
         self.temp_dir.cleanup()
+        
+    def logged_in(self) -> str:
+        """
+        returns true if you can successfully log in with webdav
+        """
+        try:
+            info = self.client.list("/")
+            logger.debug(info)
+        except RemoteParentNotFound:
+            return False
+        except RemoteResourceNotFound:
+            return False
+        except ResponseErrorCode as e:
+            if e.code != 401:
+                logger.debug(str(e))
+            return False
+        return True
 
     def create_dummy_file(self) -> Path:
         """
