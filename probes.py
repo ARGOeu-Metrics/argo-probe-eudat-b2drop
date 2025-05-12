@@ -83,6 +83,14 @@ def probe_all_actions(client: B2dropClient):
         return False
     logging.info("Download successful")
 
+    logger.info("Check checksum")
+    md5_checksum_new = client.get_checksum(new_path)
+    md5_comp = md5_checksum_new == md5_checksum_old
+    if not md5_comp:
+        logger.warning("Checksum is not correct")
+        return False
+    logger.info(f"MD5 match: {md5_comp}")
+
     logger.info("Deleting dummy file")
     client.delete(dummy_path_remote)
     exists = client.file_exists(dummy_path_remote)
@@ -91,11 +99,7 @@ def probe_all_actions(client: B2dropClient):
         return False
     logging.info("Deletion successful")
     
-    logger.info("Check checksum")
-    md5_checksum_new = client.get_checksum(new_path)
-    md5_comp = md5_checksum_new == md5_checksum_old
-    logger.info(f"MD5 match: {md5_comp}")
-    return md5_comp
+    return not exists
 
 def probe_delete(client: B2dropClient):
     dummy_path = client.create_dummy_file()
