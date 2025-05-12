@@ -1,5 +1,5 @@
 Name:		argo-probe-eudat-b2drop
-Version:	1.0
+Version:	1.1
 Release:	1%{?dist}
 Summary:	Monitoring Metrics for B2DROP 
 License:	GPLv3+
