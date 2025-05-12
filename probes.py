@@ -94,7 +94,7 @@ def probe_all_actions(client: B2dropClient):
     logger.info("Deleting dummy file")
     client.delete(dummy_path_remote)
     exists = client.file_exists(dummy_path_remote)
-    if not client.file_exists(dummy_path_remote):
+    if client.file_exists(dummy_path_remote):
         logger.warning("Deletion unsuccessful")
         return False
     logging.info("Deletion successful")
