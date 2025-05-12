@@ -5,7 +5,7 @@ import json
 import os
 import sys
 from b2drop_api import B2dropClient
-from probes import probe_upload, probe_up_and_download, probe_checksum, probe_delete
+from probes import probe_upload, probe_up_and_download, probe_checksum, probe_delete, probe_all_actions
 import logging
 
 logging.basicConfig(
