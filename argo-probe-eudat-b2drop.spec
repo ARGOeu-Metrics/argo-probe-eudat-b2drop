@@ -3,7 +3,7 @@ Version:	1.1
 Release:	1%{?dist}
 Summary:	Monitoring Metrics for B2DROP 
 License:	GPLv3+
-Packager:	Kyriakos Gkinis <kyrginis@admin.grnet.gr>
+Packager:	Winkens, Marvins <m.winkens@fz-juelich.de>
 
 Source:		%{name}-%{version}.tar.gz
 BuildArch:	noarch
