@@ -5,7 +5,7 @@ import json
 import os
 import sys
 from b2drop_api import B2dropClient
-from probes import probe_upload, probe_up_and_download, probe_checksum, probe_delete
+from probes import probe_upload, probe_up_and_download, probe_checksum, probe_delete, probe_all_actions
 import logging
 
 logging.basicConfig(
@@ -64,6 +64,8 @@ def main(args):
         success = probe_upload(client)
     elif args.probe == "checksum":
         success = probe_checksum(client)
+    elif args.probe == "all":
+        success = probe_all_actions(client)
     elif args.probe == "delete":
         success = probe_delete(client)
     else:
@@ -88,7 +90,7 @@ if __name__ == "__main__":
     # Setup argument parser
     parser = argparse.ArgumentParser(description="b2drop probe for different checks over webdav")
     parser.add_argument('--probe', required=True, type=str,
-                        help="Type of test-probe, e.g. 'upload', 'download', 'checksum'")
+                        help="Type of test-probe, e.g. 'upload', 'download', 'checksum','all'")
     parser.add_argument('--url', required=False, type=str, help="The URL to connect to.")
     parser.add_argument('--username', required=False, type=str, help="The username for authentication.")
     parser.add_argument('--password', required=False, type=str, help="The password for authentication.")
