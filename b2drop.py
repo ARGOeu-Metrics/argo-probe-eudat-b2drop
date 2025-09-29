@@ -2,11 +2,14 @@
 
 import argparse
 import json
-import os
-import sys
-from b2drop_api import B2dropClient
-from probes import probe_upload, probe_up_and_download, probe_checksum, probe_delete, probe_all_actions
 import logging
+import os
+import socket
+import sys
+
+from b2drop_api import B2dropClient
+from probes import probe_upload, probe_up_and_download, probe_checksum, \
+    probe_delete, probe_all_actions
 
 logging.basicConfig(
     level=logging.INFO,
@@ -54,7 +57,9 @@ def main(args):
         url, username, password = args.url, args.username, args.password
 
     # set up b2dropclient
-    client = B2dropClient(url, username, password)
+    client = B2dropClient(
+        url, username, password, dummy_file=f"{socket.gethostname()}_dummy.txt"
+    )
 
     # start probe
     success: bool = False
