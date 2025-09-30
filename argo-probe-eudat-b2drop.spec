@@ -1,5 +1,5 @@
 Name:		argo-probe-eudat-b2drop
-Version:	1.1
+Version:	1.2
 Release:	1%{?dist}
 Summary:	Monitoring Metrics for B2DROP 
 License:	GPLv3+
@@ -43,5 +43,8 @@ install --directory --mode 770  %{buildroot}/var/spool/argo/probes/eudat-b2drop
 %pre
 
 %changelog
+* Tue Sep 30 2025 Katarina Zailac <kzailac@srce.hr> - 1.2-1
+- ARGO-5116 Bug with multiple boxes trying to write to the same dummy file
+
 * Thu Feb 6 2025 Themis Zamani <themiszamani@gmail.com> - 0.9-4
 - Initial version of the package

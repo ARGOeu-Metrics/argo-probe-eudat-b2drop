@@ -13,12 +13,12 @@ from webdav3.exceptions import RemoteResourceNotFound, RemoteParentNotFound, Res
 from typing import Union, Optional
 
 class B2dropClient:
-    def __init__(self, url: str, username: str, password: str):
+    def __init__(self, url: str, username: str, password: str, dummy_file: str):
         if url.endswith("/"):
             url = url[:-1]
         self.base_url = f"{url}/remote.php/dav/files/{username}/"
         self.temp_dir = tempfile.TemporaryDirectory()
-        self.dummy_file = "dummy.txt"
+        self.dummy_file = dummy_file
         options = {
             'webdav_hostname': self.base_url,
             'webdav_login': username,
